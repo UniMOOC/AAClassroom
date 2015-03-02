@@ -1,0 +1,40 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">
+
+            <div class="sort-move outer-sort"></div>
+            
+            <div class="acc-title">
+                <div>
+                    <h4>{{'UNIT' | translate}} {{(index | num) + 1}}:</h4>
+                    <input type="text" class="input-neat" ng-model="unit.title" placeholder="{{'UNIT-TITLE' | translate}}...">
+                </div>
+            </div>
+           
+            
+
+            <div class="acc-switcher">
+               <a href class="accordion-toggle" ng-click="toggleOpen()" accordion-transclude="heading"><span ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
+               
+                <div class="switcher">
+                    <input type="checkbox" name="onoffswitch" ng-model="unit.active" id="switcher{{index}}">
+                    <label for="switcher{{index}}">
+                        <span></span> <span></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="counting">
+                <span class="icon-text"><i class="icon-lesson"></i> {{unit.countLessons}} <i>{{'LESSONS-min' | translate}}</i></span>
+                <span class="icon-text"><i class="icon-quiz_2"></i> {{unit.countActivities}} <i>{{'ACTIVITIES-min' | translate}}</i></span>
+                <span ng-if="unit.badgeUrl" class="icon-text"><i class="icon-badge"></i> <i>{{'ASSESSMENT' | translate}}</i></span>
+            </div>
+            
+
+
+        </div>
+    </div>
+    <div class="panel-collapse" collapse="!isOpen">
+        <div class="panel-body" ng-transclude></div>
+    </div>
+</div>

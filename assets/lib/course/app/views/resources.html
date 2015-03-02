@@ -1,0 +1,64 @@
+<div id="content" class="container">
+  <section class="row resources-container" module="module">
+    <tabset justified="true" type="pills">
+      <tab ng-repeat="module in course.units" heading="{{module.title}}" active="tab.active" disabled="tab.disabled">
+        <article ng-repeat="asm in module.assessmentsList track by $index" on-finish-render ng-class="{'has-calendar': asm.available}">
+          <div class="col-md-12">
+            <div class="panel panel-default panel-resources">
+              <div class="panel-heading">{{ course.is_basic() ? "Módulo" : "Día" }} {{$index+1}}</div>
+              <div class="panel-body" ng-if="asm.docs.length != 0 && isModuleOpen(asm)">
+                <p>Documentos: <span>
+                  <ul class="list-resources" ng-repeat="doc in asm.docs track by $index">
+                    <li><a href="{{doc[1]}}" target="_blank">{{doc[0]}}</a></li>
+                  </ul>
+                </span></p>
+              </div>
+              <div class="panel-body" ng-if="asm.docs.length == 0">
+                <p>No hay documentos para este día.</p>
+              </div>
+              <div class="panel-body" ng-if="!isModuleOpen(asm) && asm.docs.length != 0">
+                <p>Este módulo aún no se ha abierto.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <div class="col-md-12">
+          <div class="panel panel-default panel-all-resources">
+            <div class="panel-heading">Prácticas</div>
+            <div class="panel-body" ng-if="module.docs.length != 0 && isModuleOpen(module)">
+              <p><span>
+                <ul class="list-resources" ng-repeat="doc in module.docs track by $index" ng-if="doc[0] != 'Formulario de satisfacción'">
+                  <li><a href="{{doc[1]}}" target="_blank">{{doc[0]}}</a></li>
+                </ul>
+              </span></p>
+            </div>
+            <div class="panel-body" ng-if="module.docs.length == 0">
+              <p>No hay prácticas para este módulo.</p>
+            </div>
+            <div class="panel-body" ng-if="!isModuleOpen(module) && module.docs.length != 0">
+              <p>Este módulo aún no se ha abierto.</p>
+            </div>
+          </div>
+        </div>
+        <div ng-hide="course.is_basic()" class="col-md-12">
+          <div class="panel panel-default panel-all-resources">
+            <div class="panel-heading">Formulario de satisfacción</div>
+            <div class="panel-body" ng-if="module.docs.length != 0 && isModuleFinished(module)">
+              <p><span>
+                <ul class="list-resources" ng-repeat="doc in module.docs track by $index" ng-if="doc[0] == 'Formulario de satisfacción'">
+                  <li><a href="{{doc[1]}}" target="_blank">{{doc[0]}}</a></li>
+                </ul>
+              </span></p>
+            </div>
+            <div class="panel-body" ng-if="module.docs.length == 0">
+              <p>No hay formulario de satisfacción para este módulo.</p>
+            </div>
+            <div class="panel-body" ng-if="!isModuleFinished(module) && module.docs.length != 0">
+              <p>Aún no has terminado el módulo.</p>
+            </div>
+          </div>
+        </div>
+        </tab>
+    </tabset>
+  </section>
+</div>

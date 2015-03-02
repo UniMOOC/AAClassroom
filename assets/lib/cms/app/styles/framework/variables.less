@@ -1,0 +1,47 @@
+//************ COLORS
+
+// Monochrome palette
+
+@cl-primary:                #1294E4;
+@cl-primary-darken:         multiply(@cl-primary, #d7d7d7);
+@cl-primary-lighten:        screen(@cl-primary, #272727);
+
+@cl-link:                   @cl-primary;
+@cl-link-hover:             lighten(@cl-link, 10%);
+@cl-link-inverse:           #eee;
+@cl-link-inverse-hover:     #fff;
+
+@cl-sidebar:                 #fff;
+@cl-sidebar-darken:          multiply(@cl-sidebar, #eee);
+@cl-sidebar-bg:              #ddd;
+@cl-sidebar-link:            @cl-primary;
+@cl-sidebar-link-darken:     multiply(@cl-sidebar-link, #ddd);
+
+
+// Button colors
+@cl-btn-red:           #ef1616;
+@cl-btn-green:         #1db228;
+
+
+//*************  MAIN
+@cl-main-container:    #f0f0f0;
+@bg-main:              @cl-main-container url('../images/bg2.png') repeat left top;
+
+@bg-header:            #ebebeb;
+
+// Boxes
+@bg-box:                #fff;
+@bg-box-header:         #f2f2f2; 
+
+
+//*************  UI Components
+@cl-btn-tool:         darken(@cl-primary, 10%);
+@cl-btn-tool-h:       darken(@cl-primary, 4%);
+
+
+
+//************** TRANSITIONS
+
+@trans-m:               @trans-normal;
+ 
+ 

@@ -1,0 +1,75 @@
+<div id="content-wrap"> 
+   <!-- Header -->
+    <header id="toolbar">
+        <div class="container-fluid">
+          <div class="col-sm-8">
+              <a href="" ng-click="AddCourse()" class="btn button-toolbar icon-text"><i class="fa fa-plus"></i> {{'ADD-COURSE' | translate}}</a>
+              <a href="" class="btn button-toolbar icon-text" ng-class="{'disabled': pageState.btnSaveDisabled}"><i class="fa fa-save"></i> {{'SAVE' | translate}}</a>
+          </div>
+          
+          <div class="col-sm-4">
+             <div class="input-group search-form pull-right">
+                  <input type="text" class="form-control" ng-model="searchInput" placeholder="{{'SEARCH' | translate}}...">
+                  <span class="input-group-btn">
+                     <a class="btn btn-default" type="button"><i class="fa fa-search"></i></a>
+                  </span>
+            </div>
+          </div>
+            
+        </div>
+    </header>
+    <!-- End-Header -->
+    
+    
+    <!-- CONTENT -->
+    <div id="content">
+       <h3 class="h3" translate="COURSES"></h3>
+       
+       <div class="content-list">
+           
+           <!-- Box -->
+           <div class="box course-box box-animated" ng-class="{'box-updated': course.state == States.TO_UPDATE}" watch-collection-changes ng-repeat="course in courses | filter:searchInput track by $index " on-finish-render>
+                  <div class="box-image"> 
+                      <a href="" class="btn button-blue icon-text" ng-click="ChangeImage($index)"><i class="fa fa-image"></i> {{'CHANGE' | translate }}</a>
+                      <div class="overlayer"></div>
+                      <img src="{{ course.imageUrl }}" alt="">
+                  </div>
+                  
+                   <div class="box-content">
+                       <header> 
+                            <input class="input-neat title" type="text" ng-model="course.title" placeholder="{{ 'TITLE' | translate }}...">
+                            <div class="switcher-wrap">
+                                <div class="switcher">
+                                    <input type="checkbox" name="onoffswitch" ng-model="course.active" id="switcher{{$index}}">
+                                    <label for="switcher{{$index}}">
+                                        <span></span> <span></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <a href="" ng-click="EditCourse(course.id)" class="btn button-light-blue"><i class="fa fa-pencil"></i></a>
+                        </header>
+                        
+                        <div class="content">
+                            <textarea msd-elastic class="input-neat description" ng-model="course.description" placeholder="{{ 'DESCRIPTION' | translate }}..."></textarea>
+                       
+                           <div class="counting">
+                               <span class="icon-text"><i class="icon-lesson"></i> {{ unit.countLessons }} {{'LESSONS-min' | translate}}</span>
+                                <span class="icon-text"><i class="fa fa-users"></i> {{ unit.countSpeakers }} {{'SPEAKERS-min' | translate}}</span>
+                                <span class="icon-text"><i class="icon-badge"></i> {{ unit.countAssessments }} {{'ASSESSMENTS-min' | translate}}</span>
+                           </div>
+                       </div>
+                   </div>
+           </div>
+           <!-- End Box -->
+           
+           <p class="text-center">
+             <a href="" ng-click="AddCourse()" class="btn button-blue icon-text"><i class="fa fa-plus"></i> {{'ADD-COURSE' | translate}}</a>
+           </p>
+           
+           
+           <pre ng-if="config.debugMode">{{courses | json}}</pre>
+           
+       </div>
+    </div>
+</div>
+

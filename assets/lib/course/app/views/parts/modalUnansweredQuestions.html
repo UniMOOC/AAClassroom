@@ -1,0 +1,19 @@
+<div class="modal-header {{data.type}}">
+  <h4>
+      <i class="margin-right {{data.options.icon}}"></i>
+      {{data.header}}
+  </h4>
+  <a ng-show="!data.options.redirect" href="" class="btn button-modal-close" ng-click="Cancel()"><i class="fa fa-remove"></i></a>
+  <a ng-show="data.options.redirect" href="#/" class="btn button-modal-close" ng-click="Cancel()"><i class="fa fa-remove"></i></a>
+</div>
+
+<div class="modal-body">
+    <p class="text-ml" ng-bind-html="data.msg | unsafe"></p>
+</div>
+
+<div class="modal-footer">
+  <p class="text-center">
+      <a href="" class="btn btn-default" ng-click="Ok()">Enviar el examen</a>
+      <a href="" class="btn btn-default" ng-click="Cancel()">Continuar haciéndolo</a>
+  </p>
+</div>

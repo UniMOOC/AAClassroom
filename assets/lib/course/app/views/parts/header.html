@@ -1,0 +1,34 @@
+<div id="header-top" class="wrapper">
+    <div class="container">
+        <div id="logo" class="head-left">
+            <a href="http://google.es/activate" target="_blank">
+                <img ng-src="{{config.path}}/images/logo_activate.png" alt="">
+                <h4>ACTÍVATE</h4>
+            </a>
+        </div>
+
+       <div class="head-center">
+            Síguenos en <a href="https://plus.google.com/+googleactivate/posts" target="_blank"><img ng-src="{{config.path}}/images/iconoG+.jpg" width="20px"> google.com/+googleactivate</a>
+            </div>
+
+        <div class="head-right">
+             <a ng-show="googlePlusUser" ng-click="Logout()" class="btn button-google-plus gp-close"><span>Cerrar sesión</span></a>
+        </div>
+    </div>
+</div>
+
+<div id="header-bottom" class="wrapper">
+    <div class="container">
+        <div class="col-sm-7">
+            <a href="#/"><h3>{{course.title}}</h3></a>
+        </div>
+
+        <div class="col-sm-5 text-right">
+            <ul>
+                <li ng-show="userIsAdmin()"><a href="um-admin-editions" target="_blank">Admin</a></li>
+                <li><a href="https://plus.google.com/communities/111865744656887712542" target="_blank">Foro</a></li>
+                <li><a href="#/resources">Recursos</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+##########################
+# Openbadges information
+##########################
+openbadges:
+  api_host: 'http://gaeopenbadges.appspot.com'
+  client_id: ''
+  client_secret: ''

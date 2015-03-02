@@ -1,0 +1,80 @@
+<div class="modal-header {{data.type}}">
+  <h4>
+    <i class="margin-right {{data.options.icon}}"></i>
+    {{data.header}}
+  </h4>
+  <a ng-show="!data.options.redirect" href="" class="btn button-modal-close" ng-click="Cancel()"><i class="fa fa-remove"></i></a>
+  <a ng-show="data.options.redirect" href="#/" class="btn button-modal-close" ng-click="Cancel()"><i class="fa fa-remove"></i></a>
+</div>
+
+<div class="modal-body">
+  <div ng-if="data.msg.failed">
+    <p>{{data.msg.main}}</p>
+    <h3>Resultados</h3>
+    <p>Estos han sido tus resultados para las {{data.msg.feedback.questionsNumber}} preguntas del examen:</p>
+  </div><!-- end failed -->
+  <div ng-if="!data.msg.failed">
+    <p>{{data.msg.main}}</p>
+    <ul>
+    <div class="badge-list" ng-repeat="badge in data.msg.badges">
+      <div ng-if="badge.data.image">
+        <li class="badge-element">
+          <a target="_blank" ng-href="http://gaeopenbadges.appspot.com/enterprise/claim/issActivate/{{badge.data.token}}/{{data.msg.userEmail}}">
+            <img style="max-width:80px;" ng-src="{{badge.data.image}}" ng-alt="{{badge.data.criteria}}">
+          </a>
+        </li>
+      </div>
+      <div ng-if="!badge.data.image">
+        <li>
+          <a target="_blank" ng-href="http://gaeopenbadges.appspot.com/enterprise/certificate/issactivate/{{badge.data.token}}/{{data.msg.userEmail}}">
+          {{badge.data.description}}
+          </a>
+        </li>
+      </div>
+    </div>
+  </ul>
+    <p>{{data.msg.available}}</p>
+  </div><!-- end not failed -->
+  <div><!-- progress div -->
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" ng-style="{ width: data.msg.correctWidth + '%' }">
+        <span>{{data.msg.feedback.correct}} <i class="icon-checkmark"></i></span>
+      </div>
+      <div class="progress-bar progress-bar-danger" ng-style="{ width: data.msg.wrongWidth + '%' }">
+        <span>{{data.msg.feedback.wrong.length}} <i class="icon-cancel"></i></span>
+      </div>
+      <div class="progress-bar progress-bar-warning" ng-style="{ width: data.msg.emptyWidth + '%' }">
+        <span>{{data.msg.feedback.empty.length}} <i class="icon-minus"></i></span>
+      </div>
+    </div>
+  </div><!-- end progress div -->
+  <p class="text-center"><!-- progress legend -->
+    <span class="text-success" ng-if="data.msg.feedback.correct > 0"><strong><i class="icon-checkmark"> Correctas</i></strong></span>
+    <span class="text-danger" ng-if="data.msg.feedback.wrong.length > 0"><strong><i class="icon-cancel"> Incorrectas</i></strong></span>
+    <span class="text-warning" ng-if="data.msg.feedback.empty.length > 0"><strong><i class="icon-minus"> Sin contestar</i></strong></span>
+  </p><!-- end progress legend -->
+
+  <div ng-if="data.msg.feedback.wrong.length > 0">
+    <h4>Incorrectas</h4>
+    <div ng-repeat="question in data.msg.feedback.wrong">
+      <div class="alert alert-danger">
+        <strong>{{question.question}}</strong><br><s>{{question.choice}}</s>
+      </div>
+    </div>
+  </div>
+  <div ng-if="data.msg.feedback.empty.length > 0">
+    <h4>Sin contestar</h4>
+    <div ng-repeat="question in data.msg.feedback.empty">
+      <div class="alert alert-warning">
+        {{question.question}}
+      </div>
+    </div>
+  </div>
+</div><!-- end modal body -->
+
+<div class="modal-footer">
+  <p class="text-center">
+    <a ng-show="!data.options.redirect" href="" class="btn btn-default" ng-click="Cancel()">OK</a>
+    <a ng-show="data.options.redirect" href="#/" class="btn btn-default" ng-click="Cancel()">OK</a>
+  </p>
+</div>

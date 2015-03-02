@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4>{{'URL-OF-IMAGE' | translate}}</h4>
+  <a href="" class="btn button-modal-close" ng-click="Cancel()"><i class="fa fa-remove"></i></a>
+</div>
+<div class="modal-body">
+   <div class="form-group has-feedback">
+        <input class="form-control" type="text" ng-model="url" my-ng-enter="Save()">
+        <a href="" class="form-control-feedback button-close" ng-click="Clean()"><i class="fa fa-remove"></i></a>
+   </div>
+</div>
+<div class="modal-footer">
+  <a href="" class="btn btn-primary" ng-click="Save()">OK</a>
+</div>

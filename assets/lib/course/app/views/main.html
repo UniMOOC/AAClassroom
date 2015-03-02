@@ -1,0 +1,117 @@
+
+<div id="content" class="container">
+    <div ng-show="$parent.config.userLogued === false">
+        <div class="col-sm-12">
+            <div class="box padding-l">
+                <p class="text-ml">Inicia sesión con Google+ para acceder al curso.</p>
+                <br>
+                <p class="text-center">
+                    <a ng-click="Login()" class="btn button-google-plus"><i class="icon-google-plus"></i> <span>Iniciar sesión</span></a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="$parent.config.userLogued === true">
+        <div class="col-sm-12">
+            <div id="user-profile" class="box">
+                <div class="col-sm-2">
+                    <img class="img-circle" ng-src="{{googlePlusUser.img_url}}" alt="">
+                </div>
+                <div class="data-user col-sm-10">
+                    <span class="user-name">{{googlePlusUser.name}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="module-list col-sm-12">
+            <accordion close-others="true">
+                <accordion-group module="module" is-open="status.open" ng-class="{'mod-done': module.state == 'done', 'mod-open': module.state == 'open' || module.state == 'inProgress', 'mod-closed': module.state == 'closed'}" ng-repeat="module in course.units">
+                    <accordion-heading>
+                        <i class="glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                        <div class="title-wrap"><h4>{{module.title}}</h4></div>
+                    </accordion-heading>
+
+                    <article class="box assessment" ng-repeat="asm in module.assessmentsList track by $index" on-finish-render ng-class="{'has-calendar': asm.available}">
+
+                        <img ng-src="{{asm.unit_image}}" alt="">
+
+                        <div class="fila">
+                            <header>
+                                <div class="header-top">
+                                    <h4>{{asm.title}}</h4>
+                                    <span class="marking" ng-class="{'cl-red': asm.score <= 15, 'cl-orange': asm.score > 15 && asm.score <= asm.min_score, 'cl-green': asm.score > asm.min_score}">{{ asm.score || 0 | number:0}} %</span>
+                                </div>
+                                <div class="attempts">
+                                   <div tooltip="Convocatoria de {{date.start_date | date:'dd/MM/yyyy HH:mm:ss'}} a {{date.end_date | date:'dd/MM/yyyy HH:mm:ss'}}" class="date" ng-repeat="date in asm.dates track by $index" ng-class="{'current': CheckDate(date.start_date, date.end_date)}">
+                                        <span ng-repeat="attempt in date.attempts_view track by $index">
+                                            <i ng-class="{'icon-checkmark': attempt == 'pass', 'icon-cancel': attempt == 'fail' || attempt == 'clean', 'clean': attempt == 'clean'}"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </header>
+
+                            <footer>
+                                <div ng-hide="course.is_basic()" tooltip="Documentos" class="btn-doc">
+                                    <a href="" ng-class="{'disabled': ((!asm.open_docs) && !(course.open_docs && course.has_started)) && !userIsAdmin()}" ng-click="OpenLinks(asm)"><i class="icon-files-empty"></i><span ng-if="asm.docs">{{asm.docs.length}}</span></a>
+                                </div>
+                                <div tooltip="{{asm.score === undefined && asm.score < asm.min_score && asm.only_last_attempt_left ? 'Ya has realizado el primer intento. Al finalizar el curso completamente tendrás otro intento extra' : 'Examen'}}" class="btn-ass">
+                                    <a href="#/assessment/{{asm.unit_id}}" ng-class="{'disabled': (asm.score >= asm.min_score || !asm.available || asm.noAttempts || asm.noAttemptsInCurrentDate) && ! userIsAdmin() }"><i class="icon-quiz"></i></a>
+                                </div>
+                                <div tooltip="Badge" class="btn-cer">
+                                    <a target="_blank" href="{{asm.badge}}" ng-class="{'disabled': asm.score < asm.min_score}"><i class="icon-badge"></i></a>
+                                </div>
+                            </footer>
+                        </div>
+                    </article>
+                </accordion-group>
+            </accordion>
+        </div>
+
+        <h2 class="section-title">Examen final</h2>
+
+
+        <article ng-show="course.finalAsm" class="box assessment final-asm" ng-class="{'has-calendar': course.finalAsm.available , 'disabled': !course.finalAsm.available || !course.finalAsm.canDo}">
+
+            <img ng-src="{{course.finalAsm.unit_image}}" alt="">
+
+            <div class="fila">
+                <header>
+                    <div class="header-top">
+                        <h4>{{course.finalAsm.title}}</h4>
+                        <span class="marking" ng-class="{'cl-red': course.finalAsm.score <= 15, 'cl-orange': course.finalAsm.score > 15 && course.finalAsm.score <= course.finalAsm.min_score, 'cl-green': course.finalAsm.score > course.finalAsm.min_score}">{{ course.finalAsm.score || 0}} %</span>
+                    </div>
+                    <div class="attempts">
+                        <div class="date" ng-repeat="date in course.finalAsm.dates track by $index" ng-class="{'current': CheckDate(date.start_date, date.end_date)}">
+                            <span ng-repeat="attempt in date.attempts_view track by $index">
+                                <i ng-class="{'icon-checkmark': attempt == 'pass', 'icon-cancel': attempt == 'fail' || attempt == 'clean', 'clean': attempt == 'clean'}"></i>
+                            </span>
+                        </div>
+                    </div>
+                </header>
+
+                <footer>
+                    <div ng-hide="course.is_basic()" tooltip="Documento" class="btn-doc">
+                        <a href="" ng-class="{'disabled': !course.finalAsm.docs}" ng-click="OpenLinks(course.finalAsm)"><i class="icon-files-empty"></i><span ng-if="course.finalAsm.docs">{{course.finalAsm.docs.length}}</span></a>
+                    </div>
+                    <div tooltip="Examen" class="btn-ass">
+                        <a href="#/assessment/{{course.finalAsm.unit_id}}" ng-class="{'disabled': (course.finalAsm.score >= course.finalAsm.min_score || !course.finalAsm.canDo) && ! userIsAdmin()}"><i class="icon-quiz"></i></a>
+                    </div>
+                    <div tooltip="Badge" class="btn-cer">
+                        <a target="_blank" href="{{course.finalAsm.badge}}" ng-class="{'disabled': course.finalAsm.score < course.finalAsm.min_score}"><i class="icon-badge"></i></a>
+                    </div>
+                    <div ng-show="course.finalAsm.certificate" tooltip="Certificación" class="btn-cer">
+                        <a target="_blank" href="{{course.finalAsm.certificate}}" ng-class="{'disabled': course.finalAsm.score < course.finalAsm.min_score}"><i class="icon-diploma"></i></a>
+                    </div>
+                </footer>
+            </div>
+        </article>
+    </div>
+    <div class="loading-spinner" ng-hide="course">
+        <div class="loading-bar-spinner" ng-hide="$parent.config.userLogued === false">
+            <p class="spinner-icon"></p>
+        </div>
+    </div>
+    <pre style="width: 100%;" ng-if="config.debugMode">{{course | json}}</pre>
+
+</div>

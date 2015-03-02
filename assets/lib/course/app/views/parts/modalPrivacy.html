@@ -1,0 +1,29 @@
+<div class="modal-header {{data.type}}">
+  <h4>
+      <i class="margin-right {{data.options.icon}}"></i>
+      {{data.header}}
+  </h4>
+  <a ng-show="!data.options.redirect" href="" class="btn button-modal-close" ng-click="Cancel()"><i class="fa fa-remove"></i></a>
+  <a ng-show="data.options.redirect" href="#/" class="btn button-modal-close" ng-click="Cancel()"><i class="fa fa-remove"></i></a>
+</div>
+
+<div class="modal-body" style="text-align: justify;">
+    <p>Los datos que proporciones en la página de registro de los cursos de Actívate (en adelante, "tus Datos Personales") serán tratados en un fichero del que Google Spain, S.L., con dirección en Plaza Pablo Ruiz Picasso 1, Torre Picasso, 28020 – Madrid, es responsable. Tus Datos Personales serán utilizados únicamente para mantenerte informado sobre Actívate y para gestionar tu participación en los cursos. Esto incluye, entre otras cosas, enviarte un email de confirmación en caso de que seas considerado elegible para el curso de Actívate así como informarte de cualquier circunstancia relevante relacionada con el mismo, como, por ejemplo, el horario del curso al que vayas a asistir, la dirección exacta de la facultad universitaria en la que vaya a celebrarse, las instrucciones sobre cómo realizar los tests y pruebas en la plataforma online disponible a tal efecto, la disponibilidad de los diplomas, etc.</p>
+
+    <p>Aceptas que tu NIF, género, edad, nivel de estudios y código postal sean puestos a disposición del Ministerio de Empleo y Seguridad Social, datos que dicho ministerio utiliza con fines estadísticos en el marco de la Estrategia de Emprendimiento y Empleo Joven. </p>
+
+    <p>Puedes ejercer tus derechos de acceso, rectificación, cancelación y oposición enviando una carta dirigida al Departamento Legal de Google Spain, S.L., en la dirección arriba indicada o enviando un email a: <a href="mailto:reception.fax.ES-MAD-PIC@google.com" target="_blank">reception.fax.ES-MAD-PIC@google.com</a>.</p>
+
+    <p>Para más información sobre Actívate, por favor visita los <a href="https://formacionactivate2015.appspot.com/mk-especializado/terminos-condiciones/" target="_blank">Términos y Condiciones de Actívate</a>.</p>
+
+</div>
+
+<div class="modal-footer">
+  <p class="text-center">
+      <a ng-show="!data.options.redirect" href="" class="btn btn-default" ng-click="Cancel()">OK</a>
+      <a ng-show="data.options.redirect" href="#/" class="btn btn-default" ng-click="Cancel()">OK</a>
+  </p>
+</div>
+
+
+

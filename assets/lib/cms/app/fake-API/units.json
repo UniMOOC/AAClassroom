@@ -1,0 +1,41 @@
+[
+    { 
+        "id": 0,
+        "title": "Lorem ipsum dolor",
+        "badgeUrl": "images/badge.png",
+        "active": true,
+        "countLessons": 2,
+        "countActivities": 4,
+        "lessons": [
+            {
+                "title": "lorem ipsum lorem ipsum lección",
+                "activity": true
+            },
+            {
+                "title": "otra lección más"
+            }
+        ],
+        "assessment": true
+    },
+    { 
+        "id": 1,
+        "title": "Lorem ipsum dolor sit amet, consectetur.",
+        "badgeUrl": "",
+        "active": false,
+        "countLessons": 11,
+        "countActivities": 8,
+        "lessons": [
+            {
+                "title": "primera lección"
+                
+            },
+            {
+                "title": "otra lección más, con actividad",
+                "activity": true
+            },
+            {
+                "title": "titulo de la ultima leccion"
+            }
+        ]
+    }
+]

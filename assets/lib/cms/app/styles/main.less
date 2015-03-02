@@ -1,0 +1,36 @@
+// Importamos framework y estilos por defecto (menos prioritarios)
+@import "framework/variables-framework.less";
+@import "framework/variables.less";
+@import "framework/mixins.less";
+@import "other/metisMenu.less";
+
+
+/********************* MAIN DEFINITIONS ***********************/
+
+body {
+    //background: url('../images/bg-op4.png') repeat left top;
+}
+
+#wrapper{
+    background: @cl-sidebar-bg;
+}
+
+#page-wrapper {
+    min-height: 568px;
+    background: @bg-main;
+}
+
+
+
+// Importamos las clases de estilo y diseño (UI design)
+@import "design/icon-font.less";
+@import "design/ui.less";
+@import "design/animations.less";
+
+
+// Finalmente, la estructura (que podrá sobreescribir alguna definición de los UI)
+@import "structure/navbar.less";
+@import "structure/content.less";
+@import "structure/responsive.less";
+
+    

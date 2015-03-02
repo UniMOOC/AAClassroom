@@ -1,0 +1,37 @@
+
+<div id="content" class="container">
+    <section class="contents-container questions-list" ng-show="assessment">
+       <h3>{{assessment.title}}</h3>
+        <p ng-bind-html="assessment.preamble"></p>
+        <br />
+        <article class="block-question" ng-repeat="asm in assessment.questions track by $index">
+            <p class="question">{{$index + 1}}. {{asm.question}}</p>
+
+            <div class="answers">
+                <form id="assessment-form" action="">
+                  <p ng-repeat="answer in asm.options track by $index">
+                    <label class="radio-label">
+                    <input type="radio" ng-model="asm.answer"
+                                        ng-value="$index"
+                                        ng-change="change(asm.key, asm.answer)"
+                                        ng-checked="assessment.questions[asm.key][checked]==answer.key"/>
+                                        {{answer}}<label>
+                  </p>
+                </form>
+            </div>
+
+        </article>
+
+        <p class="text-center" ng-show="assessment">
+            <a href="" class="btn button-blue" ng-click="Mark()">Enviar respuestas</a>
+        </p>
+    </section>
+    <pre style="width: 100%;" ng-if="config.debugMode">{{assessment | json}}</pre>
+
+    <div class="loading-spinner" ng-hide="assessment">
+        <div class="loading-bar-spinner">
+            <p class="spinner-icon"></p>
+        </div>
+    </div>
+
+</div>

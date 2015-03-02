@@ -1,0 +1,3 @@
+google:
+  api_key: ''
+  people_me_endpoint: 'https://www.googleapis.com/plus/v1/people/me'

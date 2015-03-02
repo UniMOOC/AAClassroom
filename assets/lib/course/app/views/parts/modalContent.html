@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h4>{{data.title}}</h4>
+  <a href="" class="btn button-modal-close" ng-click="Cancel()"><i class="fa fa-remove"></i></a>
+</div>
+<div class="modal-footer">
+  
+  <div class="mymodal-content">
+     <ul>
+         <li ng-repeat="link in data.links">
+             <a href="{{link.link}}">{{link.title}}</a>
+         </li>
+     </ul>
+      
+  </div>
+ 
+  <a href="" class="btn btn-default" ng-click="Cancel()">OK</a>
+</div>

@@ -1,0 +1,32 @@
+/****************** ANIMACIONES ******************/
+
+// cuando se activa
+.box-animated.ng-enter, 
+.box-animated.ng-leave,
+.box-animated.ng-move
+{ 
+    transition: all 0.8s ease;
+    position: relative;
+    display: block;
+} 
+
+.box-animated.ng-enter.ng-enter-active, // cuando acaba al entrar, o cuando empieza al salir
+.box-animated.ng-leave,
+{
+    opacity: 1;
+    top: 0;
+}
+
+.box-animated.ng-leave.ng-leave-active,
+.box-animated.ng-enter
+{
+    opacity: 0;
+    top: -50px;
+}
+
+.box-animated.ng-move {
+    opacity:0.4;
+}
+.box-animated.ng-move.ng-move-active {
+    opacity: 1;
+}

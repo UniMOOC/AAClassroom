@@ -1,0 +1,119 @@
+{
+    "title": "Fundamentos del titulo del curso (intro)",
+    "units": [ 
+        {
+            "title": "New Unit sdkfjasklfd asjdfoi weiof iw qj fwijen fkjwenb fjkweqhflkjwhfwhqfkhwkfjwq fwq kjfhw qkjfh",
+            "type": "U",
+            "unit_id": 1,
+            "certificate": "https://trello.com/c/SaJfUN5d/822-activate-frontend-de-onepage"
+        },
+        {
+            "unit_parent": 1,
+            "dates": [
+                {
+                    "attempts": 4,
+                    "start_date": "2015-01-19T00:00:00",
+                    "end_date": "2015-01-20T00:00:00"
+                },
+                {
+                    "attempts": 3,
+                    "start_date": "2015-01-20T00:00:00",
+                    "end_date": "2015-01-21T00:00:00"
+                },
+                {
+                    "attempts": 2,
+                    "start_date": "2015-01-15T00:00:00",
+                    "end_date": "2015-01-16T00:00:00"
+                }
+            ],
+            "type": "A",
+            "docs": "[\n[\"Google\", \"http://google.es\"],\n[\"Codigo Alternativo\", \"http://codigoalternativo.com\"]\n]",
+            "min_score": "80",
+            "unit_image": "assets/lib/course/app/images/badge.png",
+            "title": "Primer Assessment lsdfjklasj dfkdasjd fasdf sadkfjs dflkasdfajsdfasd fasd f asdfsadflk",
+            "unit_id": 2,
+            "required_asms": []
+        },
+        {
+            "unit_parent": 1,
+            "dates": [
+                {
+                    "attempts": 10,
+                    "start_date": "2015-01-20T00:00:00",
+                    "end_date": "2015-01-25T00:00:00"
+                }
+            ],
+            "type": "A",
+            "docs": "",
+            "min_score": "80",
+            "unit_image": "assets/lib/course/app/images/badge.png",
+            "title": "Primer Assessment lsdfjklasj dfkdasjd fasdf sadkfjs dflkasdfajsdfasd fasd f asdfsadflk",
+            "unit_id": 3,
+            "required_asms": []
+        },
+        {
+            "title": "Unidad terminada de ejemplo",
+            "type": "U",
+            "unit_id": 4,
+            "certificate": "https://trello.com/c/SaJfUN5d/822-activate-frontend-de-onepage"
+        },
+        {
+            "unit_parent": 4,
+            "dates": [
+                {
+                    "attempts": 10,
+                    "start_date": "2015-01-15T00:00:00",
+                    "end_date": "2015-01-16T00:00:00"
+                }
+            ],
+            "type": "A",
+            "docs": "",
+            "min_score": "80",
+            "unit_image": "assets/lib/course/app/images/badge.png",
+            "title": "Examen ejemplo",
+            "unit_id": 5,
+            "required_asms": []
+        },        
+        {
+            "title": "Unidad cerrada",
+            "type": "U",
+            "unit_id": 6,
+            "certificate": "https://trello.com/c/SaJfUN5d/822-activate-frontend-de-onepage"
+        },
+        {
+            "unit_parent": 6,
+            "dates": [
+                {
+                    "attempts": 10,
+                    "start_date": "2015-01-30T00:00:00",
+                    "end_date": "2015-01-31T00:00:00"
+                }
+            ],
+            "type": "A",
+            "docs": "",
+            "min_score": "80",
+            "unit_image": "assets/lib/course/app/images/badge.png",
+            "title": "Examen ejemplo",
+            "unit_id": 7,
+            "required_asms": []
+        },        
+        {
+            "unit_parent": 0,
+            "dates": [
+                {
+                    "attempts": 10,
+                    "start_date": "2015-02-01T00:00:00",
+                    "end_date": "2015-02-03T00:00:00"
+                }
+            ],
+            "type": "F",
+            "docs": "",
+            "min_score": "90",
+            "unit_image": "assets/lib/course/app/images/badge.png",
+            "title": "Examen final",
+            "unit_id": 8,
+            "required_asms": ["2"]
+        }
+    ]
+}
+

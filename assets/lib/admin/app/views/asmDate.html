@@ -1,0 +1,195 @@
+<div ng-app="asmDateModule" ng-controller="asmDateController" class="calendar-container">
+  <section class="row">
+    <article class="col-md-4">
+        <select ng-model="selected_edition" class="form-control" ng-change="select_edition()">
+          <option value="">-- Selcciona una edición --</option>
+          <option ng-repeat="edition in editions" value="{{edition.key}}">{{ edition.name }}</option>
+      </select>
+    </article>
+    <article class="col-md-6">
+        <button class="btn btn-primary" ng-click="setActiveEdition('calendar')" >Ver calendario</button>
+        <button class="btn btn-primary" ng-click="setActiveEdition('list')">Ver lista</button>
+        <button class="btn btn-primary" ng-click="createEdition = !createEdition">Crear edición</button>
+        <button class="btn btn-primary" ng-click="createAsmDate = !createAsmDate">Crear convocatoria</button>
+    </article>
+  </section>
+<br>
+  <section class="row">
+    <div collapse="createEdition">
+      <article class="col-md-12">
+        <h3>Crear edición</h3>
+        <div class="form-inline" id="form-create-edition">
+          <div class="form-group">
+            <label for="code">Edición</label>
+            <input type="text" class="form-control" id="code" name="code">
+          </div>
+          <div class="form-group">
+            <label for="start_date">Fecha de comienzo</label>
+            <p class="input-group">
+              <input type="text" id="start_date" name="start_date" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="fa fa-calendar"></i></button>
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-default btn-success" id="btn-create-edition">Crear</button>
+        </div>
+        <br>
+        <div id="result-create-edition"></div>
+        <script type="text/javascript">
+        $('#btn-create-edition').click(function(){
+          $.post(
+            "api/editions",
+            {
+              'code': $('#code').val(),
+              'start_date': $('#start_date').val()
+            })
+          .done(function(data){
+            $('#result-create-edition').html("<div class='alert alert-success'>Creado correctamente</div>");
+            window.location.reload();
+          })
+          .fail(function(data){
+            if (data.responseText.indexOf("EditionAlreadyExists") != -1){
+              $('#result-create-edition').html("<div class='alert alert-warning'>La edición ya existe</div>");
+            }else{
+              $('#result-create-edition').html("<div class='alert alert-danger'>Ha habido un error creando la edición</div>");
+            }
+          })
+        })
+        </script>
+      </article>
+    </div>
+  </section>
+  <section class="row">
+    <div collapse="createAsmDate">
+      <article class="col-md-4">
+      <h3>Crear convocatoria</h3>
+        <div class="form-group">
+          <label for="asm-edition">Edición</label>
+          <input type="text" class="form-control" id="asm-edition" ng-model="new_asm_date.edition">
+        </div>
+        <div class="form-group">
+          <label for="assessment">Id del exámen</label>
+          <input type="text" class="form-control" id="assessment" ng-model="new_asm_date.assessment">
+        </div>
+        <div class="form-group">
+          <label for="asm-date-start">Fecha de inicio</label>
+          <input type="text" class="form-control" id="asm-date-start" ng-model="new_asm_date.start_date">
+        </div>
+        <div class="form-group">
+          <label for="asm-date-end">Fecha de fin</label>
+          <input type="text" class="form-control" id="asm-date-end" ng-model="new_asm_date.end_date">
+        </div>
+        <div class="form-group">
+          <label for="asm-attempts">Intentos</label>
+          <input type="text" class="form-control" id="asm-attempts" ng-model="new_asm_date.attempts">
+        </div>
+        <div class="checkbox">
+        <label>
+          <input type="checkbox" id="check_attendance" ng-model="new_asm_date.check_attendance"> Asistencia obligatoria
+        </label>
+        </div>
+        <button class="btn btn-default" ng-click="add_new_asm_date()">Create</button>
+      </article>
+    </div>
+  </section>
+  <section class="row">
+    <article class="col-md-4">
+      <section class="row">
+        <article class="col-md-12">
+          <form>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h5><i class="fa fa-pencil"></i> Editar examen: {{asmData.title || 'Ningún examen seleccionado'}}</h5>
+            </div>
+            <div class="panel-body">
+            <h5><i class="fa fa-calendar"></i> Fecha de inicio:</h5>
+            <div class="row">
+              <div class="col-lg-3">
+                <input type="text" min='1' max="31" ng-model="asmData.startDay" value="{{asmData.startDay}}" class="form-control">
+              </div>
+              <div class="col-lg-3">
+                <input type="text" min="1" max="12" ng-model="asmData.startMonth" value="{{asmData.startMonth}}" class="form-control">
+              </div>
+              <div class="col-lg-3">
+                <input type="text" min="2013" ng-model="asmData.startYear" value="{{asmData.startYear}}" class="form-control">
+              </div>
+              <div class="col-lg-3">
+                <input type="text" ng-model="asmData.startTime" value="{{asmData.startTime}}" class="form-control">
+              </div>
+            </div><!-- row -->
+
+            <h5><i class="fa fa-calendar"></i> Fecha de fin:</h5>
+            <div class="row">
+              <div class="col-md-3">
+                <input type="text" ng-model="asmData.endDay" value="{{asmData.endDay}}" class="form-control">
+              </div>
+              <div class="col-md-3">
+                <input type="text" ng-model="asmData.endMonth" value="{{asmData.endMonth}}" class="form-control">
+              </div>
+              <div class="col-md-3">
+                <input type="text" ng-model="asmData.endYear" value="{{asmData.endYear}}" class="form-control">
+              </div>
+              <div class="col-md-3">
+                <input type="text" ng-model="asmData.endTime" value="{{asmData.endTime}}" class="form-control">
+              </div>
+            </div><!-- row -->
+            <h5><i class="fa fa-list-ul"></i> Intentos:</h5>
+            <div class="row">
+              <div class="col-md-3">
+                <input ng-model="asmData.attempts" value="{{asmData.attempts}}" type="text" class="form-control">
+              </div>
+              <div class="col-md-8">
+                <h5 ng-model="asmData.check_attendance"><i class="fa fa-bookmark-o"></i> <b>Asistencia:</b> {{asmData.check_attendance}}</h5>
+              </div>
+            </div><!-- row -->
+            <br>
+              <div class="row">
+                <div class="col-md-3">
+                  <button class="btn btn-default btn-success" ng-click="updateAssessment(asmData)"><i class="fa fa-floppy-o"></i> Guardar</button>
+                </div>
+              </div><!-- row -->
+            </div>
+            </form>
+          </div>
+        </article>
+      </section>
+    </article>
+    <div ng-show="showEdition('calendar')">
+        <article class="col-md-8">
+          <div calendar="eventCalendar" ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div>
+        </article>
+    </div>
+    <div ng-show="showEdition('list')">
+        <article class="col-md-7" id="list-container">
+          <h3>Listado</h3>
+          <table class="table">
+            <tr>
+              <th><a href="" ng-click="predicate = 'assessment_int'; reverse=!reverse">Exámen</a></th>
+              <th><a href="" ng-click="predicate = 'start_date'; reverse=!reverse">Inicio</a></th>
+              <th><a href="" ng-click="predicate = 'end_date'; reverse=!reverse">Fin</a></th>
+              <th><a href="" ng-click="predicate = 'attempts'; reverse=!reverse">Intentos</a></th>
+              <th><a href="" ng-click="predicate = 'check_attendance'; reverse=!reverse">Asistencia</a></th>
+              <th></th>
+            </tr>
+            <tr ng-repeat="asm_date in asm_dates | orderBy:predicate:reverse">
+              <td>{{asm_date.assessment}}</td>
+              <td><input type="text" ng-model="asm_date.start_date" value="{{asm_date.start_date}}" ></td>
+              <td><input type="text" ng-model="asm_date.end_date" value="{{asm_date.end_date}}" ></td>
+              <td><input type="text" min="0" class="form-control" ng-model="asm_date.attempts"></td>
+              <td>{{asm_date.check_attendance}}</td>
+              <td><button class="btn btn-default" ng-click="save(asm_date)">Guardar</button></td>
+            </tr>
+          </table>
+        </article>
+    </div>
+    </section>
+    <section class="row">
+      <article class="col-md-3">
+        <button class="btn btn-default btn-success" ng-click="updateAllAssessments()">Guardar Todos</button>
+      </article>
+    </section><!-- row -->
+</div>
+<div id="message_response_save"></div>

@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a href class="accordion-toggle" ng-click="toggleOpen()" accordion-transclude="heading"><span ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
+          <div class="module-head-icons">
+
+              <a ng-show="module.certificate && module.can_get_certificate" href="{{module.certificate}}" target="_blank" class="btn link-diploma"><i class="icon-diploma"></i></a>
+
+              <span ng-show="! module.certificate || !module.can_get_certificate">{{module.completed_asms}} / {{module.assessmentsList.length}}</span>
+          </div>
+        </h4>
+      </div>
+      <div class="panel-collapse" collapse="!isOpen">
+          <div class="panel-body" ng-transclude></div>
+      </div>
+</div>

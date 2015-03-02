@@ -1,0 +1,208 @@
+/******************* UI COMPONENTS *****************/
+
+/******** COLORS *********/
+
+.cl-red{    color: @red-color; }
+.cl-orange{ color: darken(@orange-color, 5%); }
+.cl-green{  color: @green-color; }
+
+.btn-google-plus{  background: @cl-google-plus; }
+.btn-facebook{     background: @cl-facebook; }
+.btn-twitter{      background: @cl-twitter; }
+.btn-linkedin{     background: @cl-linkedin; }
+
+/******** BUTTONS *********/
+
+[class^="icon-"], [class*=" icon-"]{
+    line-height: 1.6;
+}
+
+.btn{
+    outline: 0;
+    &:hover, &:focus{ outline: 0; }
+}
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn{
+    opacity: .5;
+}
+
+.input-group-btn .btn{
+    border-radius: 4px;
+}
+
+
+.button-blue{ 
+    .btn-color(@blue-color);
+}
+
+.button-red{ 
+    .btn-color(@red-color);
+}
+
+.button-green{ 
+    .btn-color(@green-color);
+}
+
+.button-google-plus{
+    .btn-color-soft(@cl-google-plus);
+    border: 1px solid darken(@cl-google-plus, 8%);
+    padding: 2px 0;
+
+    &.icon{ font-size: 20px; }
+
+    & > * { padding: 6px 10px; vertical-align: middle;}
+    & > i { 
+        font-size: 24px;
+        border-right: 1px solid darken(@cl-google-plus, 8%); 
+    }
+    & > span { font-size: 16px; }
+}
+
+.gp-close{ padding: 8px; }
+
+
+/************ LOADING BAR ***********/ 
+@cl-loading: @cl-google-plus;
+@load-stroke: 4px;
+
+#loading-bar{
+    .bar{
+        height: @load-stroke;
+        background: @cl-loading;
+    }
+    .peg{ width: 150px; height: 4px; }
+}
+
+#loading-bar-spinner{ 
+    top: 18px; 
+    .spinner-icon{ 
+        width: 25px;
+        height: 25px;
+        border: solid @load-stroke transparent;
+        border-top-color: @cl-loading;
+        border-left-color: @cl-loading;
+    }
+}
+
+
+
+
+/********* SWITCHER *********/
+
+.switcher{
+    .switcher;
+}
+
+
+
+
+/********* FORMULARIOS *********/
+
+.input-neat{
+    width: 100%;
+    padding: 4px 8px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: border-color ease-in-out @trans-fast, box-shadow ease-in-out @trans-fast;
+    resize: none;
+    overflow: hidden;
+    
+    
+    &:hover{
+        border: 1px dashed #ccc; 
+        box-shadow: inset 0 1px 1px 1px rgba(0,0,0, 0.075);
+    }
+    
+    &:focus{ 
+        @color: #66afe9;
+        @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
+        border: 1px solid @color;
+        outline: 0;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @color-rgba;
+    }
+    
+    textarea&{
+        max-height: 70px;
+    }
+}
+
+
+
+
+
+/************ MODALS ************/
+
+.modal-content{ overflow: hidden; }
+
+.modal-footer .text-center{
+    margin: 0;
+}
+
+.mymodal-content{ 
+    text-align: left;
+    li{ list-style: none; }
+    a{ font-size: 1.2em; }
+}
+
+.button-modal-close{
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 18px;
+}
+
+.modal-header.error{
+    background: @cl-red;
+    & *{ color: white; }
+}
+
+.modal-header.warning{
+    background: @cl-orange;
+    & *{ color: white; }
+}
+
+.modal-header.success{
+    background: @cl-green;
+    & *{ color: white; }
+}
+
+.modal-header.info{
+    background: @cl-blue;
+    & *{ color: white; }
+}
+
+.modal-header,.modal-footer{
+    padding: 8px 15px;
+}
+
+
+/************ TOOLTIP ************/
+.tooltip{
+    font-size: 14px;
+}
+
+
+/************  HELPERS ***********/
+
+.text-ml{
+    font-size: 16px; 
+}
+
+.padding-l{
+    padding: 24px;
+}
+
+.without-padding{
+    padding-left: 0; padding-right: 0;
+}
+
+.margin-v-m{
+    margin: 10px auto;
+}
+
+.margin-right{
+    margin-right: 8px;
+}
+
+
+
+

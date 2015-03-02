@@ -1,0 +1,59 @@
+@media(min-width:@screen-sm-min) { 
+    #page-wrapper {
+        position    : inherit;
+        margin      : 0 0 0 190px;
+        border-left : 1px solid darken(@gray-lightest, 6.5%);
+        transition  : @trans-fast all linear;
+        
+        &.collapsed{ margin: 0 0 0 80px; }
+        .container-fluid { padding: 0 30px; }
+    }
+    
+    // Hacemos fixed los elementos fijos
+    #wrapper{
+        >aside{ position: fixed; z-index: 9; width: 100%; }
+        #toolbar{ position: fixed; z-index: 9; width: auto; }
+        #content{ padding-top: 90px; }
+        #content-wrap{ padding-top: 50px; }
+    }
+    
+    .sidebar {
+        z-index: 1;
+        position   : absolute;
+        //width    : 250px;
+        margin-top : 50px;
+    }
+
+    .navbar-top-links{
+        .dropdown-messages, .dropdown-tasks, .dropdown-alerts {
+            margin-left: auto;
+        }        
+    }
+    
+    #side-menu{ 
+        width      : 190px;
+        transition : @trans-fast all linear;
+        //overflow : hidden;
+        
+        li + li > a { white-space: nowrap; transition: @trans-fast all linear; }
+        li.sidebar-language{ transition: @trans-fast all linear; }
+        
+        &.collapsed{ 
+            
+            width: 80px;
+            
+            .hideable { display: none; }
+            
+            > li + li > a{ 
+                padding   : 10px 26px;
+                font-size : 22px;
+                i{ margin-right: 25px; }
+            }
+            
+            > li.sidebar-language{ padding: 10px 1px; }
+        }
+    }
+    
+    #loading-bar-spinner { top: 58px; }
+    #loading-bar .bar{     top: 50px; }
+}

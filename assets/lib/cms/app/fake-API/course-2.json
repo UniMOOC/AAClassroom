@@ -1,0 +1,11 @@
+{ 
+    "id": 0,
+    "title": "Gastronomía digital",
+    "imageUrl": "http://placekitten.com/300/170",
+    "description": "lorem ispdfoisd fosdjfos djfpsojd fpoiasjdfpsojdfiojsiodfj iosajdfiops jadiopfjiospajdfpo dsijojfiopsajdfiojsjpdf oiasjdifojsa dfojsadipofjsaodfj",
+    "active": true,
+    "startDate": "02/11/2015",
+    "adminEmails": "martin@unimooc.com, alberto@unimooc.com, joan@unimooc.com",
+    "forumUrl": "xxx_xxx.com",
+    "forumEmail": "example@googlegroups.com"
+}

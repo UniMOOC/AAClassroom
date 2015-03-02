@@ -1,0 +1,11 @@
+{ 
+    "id": 0,
+    "title": "Introducción a la economía digital",
+    "imageUrl": "http://placekitten.com/300/170",
+    "description": "Este curso utilizará los recursos desarrollados en UniMOOC, añadiendo la participación en foros, nuevas actividades y la evaluación del modelo de negocio, todo ello, supervisado por profesores del área de Economía Aplicada de la UA.",
+    "active": true,
+    "startDate": "07/03/2015",
+    "adminEmails": "martin@unimooc.com, alberto@unimooc.com, joan@unimooc.com",
+    "forumUrl": "xxx_xxx.com",
+    "forumEmail": "example@googlegroups.com"
+}

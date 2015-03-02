@@ -1,0 +1,18 @@
+credentials:
+  username: 'your-name'
+  password: 'your-password'
+
+async:
+  queue_name: 'sendgrid'
+  endpoint: '/script/sendgrid/send'
+
+local_send:
+  enabled: false
+  message: 'Sending email is dissabled during development. Check settings in modules/um_sendgrid/config.yaml'
+
+templates:
+  welcome:
+    id: 'id-template'
+    address: 'El equipo de Actívate <activate.academies@gmail.com>'
+    subject: 'Bienvenido a Actívate'
+    category: 'welcome'

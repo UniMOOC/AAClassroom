@@ -1,0 +1,83 @@
+<!-- Navigation -->
+<nav id="navbar" class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" ng-href="#/index.html"><i class="fa fa-dashboard fa-fw"></i> <b>CMS</b> Google Course Builder</a>
+    </div>
+    
+
+   <!-- Top Navbar Horizontal -->
+    <ul class="navbar-top-links nav navbar-right">
+        <!-- Dropdown User -->
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                Usuario (cambiar a API) <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+                <li><a href=""><i class="fa fa-user fa-fw"></i> {{ 'USER-PROFILE' | translate }}</a>
+                </li>
+                <li><a href=""><i class="fa fa-gear fa-fw"></i> {{ 'SETTINGS' | translate }}</a>
+                </li>
+                <li class="divider"></li>
+                <li><a href=""><i class="fa fa-sign-out fa-fw"></i> {{ 'LOGOUT' | translate }}</a>
+                </li>
+            </ul>
+        </li>
+        <!-- / Dropdown User -->
+    </ul>
+    <!-- / Top Navbar Horizontal -->
+    
+
+   <!-- Sidebar -->
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu" ng-class="{'collapsed': config.sidebarCollapsed}">
+                            
+              <li class="sidebar-language">
+                 <a ng-show="!config.sidebarCollapsed" ng-click="config.sidebarCollapsed = !config.sidebarCollapsed" href=""><i class="fa fa-angle-double-left fa-fw"></i></a>
+                  <a ng-show="config.sidebarCollapsed" ng-click="config.sidebarCollapsed = !config.sidebarCollapsed" href=""><i class="fa fa-angle-double-right fa-fw"></i></a>
+                 
+                  <select selectpicker="">
+                      <option value="en" data-content="<img class='icon' src='images/en.png' alt=''> <span translate='ENGLISH'></span>"></option>
+                      <option value="es" data-content="<img class='icon' src='images/es.png' alt=''> <span translate='SPANISH'></span>"></option>
+                  </select>
+              </li>
+                
+                <li>
+                    <a href="#/index.html">
+                        <i class="fa fa-home fa-fw"></i> <span class="hideable">{{ 'HOME' | translate }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/index.html">
+                        <i class="fa fa-users fa-fw"></i> <span class="hideable">{{ 'SPEAKERS' | translate }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-gear fa-fw"></i> <span class="hideable">{{ 'SETTINGS' | translate }}</span> 
+                        <span class="fa arrow" ng-show="!config.sidebarCollapsed"></span>
+                    </a>
+                    
+                    <ul class="nav">
+                        <li>
+                            <a href="#">Algo</a>
+                        </li>
+                        <li>
+                            <a href="#">Algo más</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                
+            </ul>
+        </div>
+        <!-- /.sidebar-collapse -->
+    </div>
+    <!-- /.navbar-static-side -->
+</nav>

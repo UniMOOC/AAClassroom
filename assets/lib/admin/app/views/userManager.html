@@ -1,0 +1,92 @@
+<div class="box" style="padding-bottom:15px;" ng-app="UserManagerModule" ng-controller="UserManagerController">
+	<div class="col-md-12">
+		<h3>Users</h3>
+		<div ng-show="error_message" id="alert-search" class="alert alert-warning alert-dismissible" role="alert">
+		  <strong>{{error_message_header}}:</strong> {{ error_message }}
+		</div>
+		<div class="form-inline">
+		  <div class="form-group">
+		    <input type="email" class="form-control" ng-model="email" placeholder="example@example.com">
+		  </div>
+		  <button class="btn btn-default" ng-click="search()">Buscar</button>
+		</div>
+		<div ng-show="user">
+			<hr/>
+			<h4>{{ user.name }}</h4>
+			<div class="form-horizontal">
+			  <div class="form-group">
+			    <label class="col-sm-2 control-label">Nombre</label>
+			    <div class="col-sm-10">
+			      <input type="text" ng-model="user.additional_fields.name" class="form-control">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="col-sm-2 control-label">Apellidos</label>
+			    <div class="col-sm-10">
+			      <input type="text" ng-model="user.additional_fields.last_name" class="form-control">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="col-sm-2 control-label">Mail de acreditaciones</label>
+			    <div class="col-sm-10">
+			      <input type="text" ng-model="user.additional_fields.acreditations_email" class="form-control">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="col-sm-2 control-label">Edicion</label>
+			    <div class="col-sm-10">
+			      <input type="text" ng-list ng-model="user.additional_fields.editions" class="form-control">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="col-sm-2 control-label">Puntuaciones</label>
+			    <div class="col-sm-10">
+			    	<div ng-repeat="(asm, score) in user.scores">
+			    		<label>{{asm}}:</label>
+			    		<input type="number" step="any" min="0" max="100" ng-model="user.scores[asm]">
+			    	</div>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button type="submit" class="btn btn-primary" ng-click="user.$save()">Guardar</button>
+			    </div>
+			  </div>
+			</div>
+			<h4>Intentos restantes</h4>
+			<table class="table">
+				<tr>
+					<th>Examen</th>
+					<th>Inidio</th>
+					<th>Fin</th>
+					<th>Intentos restantes</th>
+				</tr>
+					<tr ng-repeat="(asm_date, attempts) in user_attempts.attempts_left">
+						<td>{{user_attempts.nice_name(asm_date)}}</td>
+						<td>{{user_attempts.names[asm_date].start_date}}</td>
+						<td>{{user_attempts.names[asm_date].end_date}}</td>
+						<td><input type="number" step="any" min="0" max="100" ng-model="user_attempts.attempts_left[asm_date]"></td>
+					</tr>
+			</table>
+			<button type="submit" class="btn btn-primary" ng-click="user_attempts.$save()">Guardar</button>
+			<h4>Intentos extraordinarios</h4>
+		    Añadir nuevo:
+		    <div class="form-inline">
+			    <select ng-model="asm_name" class="form-control">
+			        <option ng-repeat="asm_id in asm_names">{{asm_id}}</option>
+			    </select>
+			    <button type="submit" class="btn btn-primary" ng-click="AddExtraAttempt(asm_name)">+ Añadir</button>
+			</div>
+		    <table class="table">
+		        <tr>
+		            <th>Examen</th>
+		            <th>URL</th>
+		        </tr>
+		        <tr ng-repeat="(asm_id, url_hash) in user.additional_fields.extra_attempts">
+		            <td>{{ asm_names[asm_id] }}</td>
+		            <td>{{ base_url + 'course#/extra-attempts/' + url_hash }}</td>
+		        </tr>
+		    </table>
+		</div>
+	</div>
+</div>

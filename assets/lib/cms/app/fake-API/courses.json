@@ -1,0 +1,34 @@
+[
+    { 
+        "id": 0,
+        "title": "Introducción a la economía digital",
+        "imageUrl": "http://placekitten.com/300/170",
+        "description": "Este curso utilizará los recursos desarrollados en UniMOOC, añadiendo la participación en foros, nuevas actividades y la evaluación del modelo de negocio, todo ello, supervisado por profesores del área de Economía Aplicada de la UA.",
+        "active": true,
+        "countLessons": 15,
+        "countSpeakers": 5,
+        "countAssessments": 3
+    },
+    { 
+        "id": 1,
+        "title": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita obcaecati numquam itaque adipisci, soluta!",
+        "imageUrl": "http://placekitten.com/301/170",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi voluptatum iste quod modi, minima qui sunt obcaecati. Sit ea deserunt suscipit perspiciatis, porro nesciunt sint animi, quos, hic doloribus in veritatis. Consequatur porro quisquam inventore vero veritatis corporis nihil neque non delectus debitis perspiciatis itaque expedita unde cumque animi qui aspernatur nesciunt ex, nemo quas, autem! Possimus quae, aliquid totam eius. Adipisci, magnam quis ut tempora repellat. Voluptates quibusdam eaque accusantium tenetur sint dignissimos dolorum.",
+        "active": false,
+        "countLessons": 58,
+        "countSpeakers": 15,
+        "countAssessments": 11
+
+    },
+    { 
+        "id": 2,
+        "title": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere.",
+        "imageUrl": "http://placekitten.com/300/171",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci eaque quas, rerum debitis qui quibusdam explicabo fuga, atque doloribus animi sed incidunt ad, repellat odio veritatis aspernatur aliquam iusto!",
+        "active": true,
+        "countLessons": 5,
+        "countSpeakers": 51,
+        "countAssessments": 30
+
+    }
+]

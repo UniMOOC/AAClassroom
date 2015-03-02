@@ -1,0 +1,326 @@
+/******************* UI COMPONENTS *****************/
+
+/******** BUTTONS *********/
+
+.btn{
+    border-radius : 2px;
+    outline       : 0;
+    &:hover, &:focus{ outline: 0; }
+}
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn{
+    opacity: .5;
+}
+
+.input-group-btn .btn{
+    border-radius: 4px;
+}
+
+.button-toolbar{ 
+    .fn-static(16);
+    .btn-color-manual(@cl-btn-tool; transparent; @cl-btn-tool-h; #f8f8f8);
+}
+
+.button-toolbar-inverse{
+    .fn-static(16);
+    .btn-color-manual(#fff; @cl-primary; #fff; @cl-btn-tool);
+}
+
+.button-blue{ 
+    .btn-color(@cl-primary);
+}
+
+.button-red{ 
+    .btn-color(@cl-primary);
+}
+
+.button-green{ 
+    .btn-color(@cl-primary);
+}
+
+.button-light-blue{
+    .btn-light-color(@cl-primary); 
+    .button-size(3px; 8px; 18px; 1.4; 2px);
+}
+
+
+.button-close{
+    .btn-no-bg(#bbb; #666);
+}
+
+.icon-text{
+    & > i{ margin-right: 8px; }
+}
+
+
+
+/********* SWITCHER *********/
+
+.switcher{
+    .switcher;
+}
+
+
+
+/********* FORMULARIOS *********/
+
+.input-neat{
+    width         : 100%;
+    padding       : 6px 12px;
+    border        : 1px solid transparent;
+    border-radius : 4px;
+    transition    : border-color ease-in-out @trans-fast, box-shadow ease-in-out @trans-fast;
+    resize        : none;
+    overflow      : hidden;
+    background    : transparent;
+
+    &:hover{
+        border     : 1px dashed #ccc; 
+        box-shadow : inset 0 1px 1px 1px rgba(0,0,0, 0.075);
+    }
+
+    &:focus{ 
+        @color      : #66afe9;
+        @color-rgba : rgba(red(@color), green(@color), blue(@color), .6);
+        border      : 1px solid @color;
+        outline     : 0;
+        box-shadow  : inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @color-rgba;
+    }
+}
+
+
+
+/************ MODALS ************/
+
+.modal-header{
+    padding: 9px 15px;
+}
+
+.modal-footer{
+    text-align: center;
+}
+
+.form-control-feedback{
+    top: 0;
+}
+
+.btn.button-modal-close{
+    position  : absolute;
+    top       : 3px;
+    right     : 3px;
+    font-size : 17px;
+    .btn-no-bg(#bbb; #666);
+}
+
+
+
+
+/*********** LOADING BAR **********/
+
+@cl-bar: #f77f35;
+
+#loading-bar{
+
+    .bar{
+        background : @cl-bar;
+        top        : 0px;
+        height     : 4px;
+    }
+
+    .peg{
+        width      : 50%;
+        height     : 4px;
+        opacity    : .45;
+        box-shadow : @cl-bar 1px 0 6px 1px;
+    }
+} 
+
+#loading-bar-spinner {
+
+    position : fixed;
+    z-index  : 10002;
+    top      : 10px;
+    left     : 10px;
+    
+    .spinner-icon{ 
+        .square(25px);
+        border            :  solid 4px transparent;
+        border-top-color  :  @cl-bar;
+        border-left-color : @cl-bar;
+        border-radius     : 10px;
+    }
+}
+
+
+
+
+/*********** ACCORDION UNITS **********/ 
+
+.accordion{
+    
+    .panel-heading{
+        position: relative;
+        padding: 6px 15px;
+    }
+    
+    .panel-title{ 
+        font-size: 15px;
+        
+        > .acc-switcher{ position: absolute; top: 8px; right: 10px; }
+        .acc-title { 
+            display: block; 
+            margin: 0 90px 0 42px; 
+            
+            > div{ 
+                display: table; table-layout: fixed; width: 100%;
+                > * { display: table-cell; font-size: 17px; }
+            }
+            h4{ width: 92px; text-align: left; }
+            input{ font-weight: 500; padding: 4px 6px; }
+        }
+        
+        img{
+            width: 38px;
+            position: absolute;
+            bottom: 0;
+            left: 50px;
+            opacity: 0.7;
+        }
+        
+        a.accordion-toggle{ 
+            padding: 6px 12px;
+            &:hover, &:focus{ color: @cl-link-hover; }
+        }
+        .counting{ 
+            margin: 8px 34px 0 47px; 
+        }
+    }
+    
+    .head-open .panel-title > a{
+        color: @cl-link;
+    }
+    .acc-switcher{
+        > * { display: inline-block; vertical-align: middle; }
+    }
+    .box{
+        border: 1px solid #eee;
+    }
+}
+
+
+
+/*********** SORTABLE UNITS **********/ 
+
+.box-sortable{
+    
+    .sort-move{ 
+        position: absolute; 
+        cursor: move;
+        height: 100%; color: @gray;
+        top: 0; left: 0;
+        padding: 10px 15px; 
+        border-right: 1px dashed #ccc;
+        
+        &:before{ 
+            .make-icon('Glyphicons Halflings');
+            content: "\e068";
+            top: 50%; transform: translateY(-50%);
+        }
+    }
+    
+    .box-content{
+        margin-left: 50px;
+        padding: 5px 7px;
+        
+        b { width: 92px; }
+    }
+    
+    hr{ margin: 5px 0; } 
+    
+    .lesson-activity{
+        padding: 4px 0 4px 16px;
+        .pull-right{ margin-top: -6px; }
+    }
+    .table-buttons{ width: 75px; }
+    
+    .unit-assessment{
+        .border-box-color(4px; left; @cl-primary);
+        padding: 6px;
+        box-shadow: 1px 1px 5px #c2c2c2;
+        
+        img{ width: 50px; margin: 0 12px 0 6px; }
+    }
+}
+
+.sortable-placeholder{
+    background: #ddd;
+    border: 2px dashed #999;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+
+
+
+
+
+/******************  HELPERS  ***************/
+
+.table-wrap{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    > * { display: table-cell; }
+}
+
+input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"] {
+    line-height: 20px;
+}
+
+.h3{
+    text-align  : center;
+    margin      : 0;
+    font-size   : 32px;
+    font-weight : normal;
+    color       : #4d4d4d;
+    &.input-neat{
+        height: 40px;
+    }
+}
+
+.no-padding{ padding-left: 0; padding-right: 0; }
+
+.with-margins{ 
+    margin: 30px auto;
+    @media(max-width:@screen-xs-max) {
+        > *{ margin: 15px auto; }
+    }
+}
+
+.with-margins-s{ 
+    margin: 15px auto;
+    @media(max-width:@screen-xs-max) {
+        > *{ margin: 5px auto; }
+    }
+}
+
+.max-width-m{
+    max-width: 200px;
+}
+
+.max-width-l{
+    max-width: 350px;
+}
+
+.margin-v-m{
+    margin: 15px auto;
+}
+
+.margin-v-l{
+    margin: 30px auto;
+}
+
+
+
+
+
+
